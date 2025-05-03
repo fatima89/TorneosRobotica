@@ -35,7 +35,7 @@ import com.example.torneosrobotica.ui.theme.UnselectedField
 import android.util.Log
 
 @Composable
-fun LoginView(auth: FirebaseAuth) {
+fun LoginView(auth: FirebaseAuth, navigateToPrincipal: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -84,7 +84,7 @@ fun LoginView(auth: FirebaseAuth) {
         Button(onClick = {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener{ task ->
                 if(task.isSuccessful){
-                    //navigateToHome()
+                    navigateToPrincipal()
                     Log.i("pequeciencia", "Inicio de sesion correcta")
                 }else{
                     //Error

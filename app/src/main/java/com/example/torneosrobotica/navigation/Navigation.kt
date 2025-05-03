@@ -7,12 +7,14 @@ import androidx.navigation.compose.composable
 import com.example.torneosrobotica.views.HomeView
 import com.example.torneosrobotica.views.LoginView
 import com.example.torneosrobotica.views.SingUpView
+import com.example.torneosrobotica.views.PrincipalView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 @Composable
 fun Navigation (navHostController: NavHostController,auth: FirebaseAuth) {
 
-    NavHost(navController = navHostController, startDestination = "home"){
+    NavHost(navController = navHostController, startDestination = "principal"){
         composable("home")
         {
             HomeView(
@@ -22,11 +24,14 @@ fun Navigation (navHostController: NavHostController,auth: FirebaseAuth) {
         }
         composable("logIn")
         {
-            LoginView(auth)
+            LoginView(auth){ navHostController.navigate("principal")}
         }
         composable("signUp")
         {
             SingUpView(auth)
+        }
+        composable("principal"){
+            PrincipalView()
         }
     }
 }
