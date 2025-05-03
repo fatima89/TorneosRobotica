@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "456917876707",
+    "project_id": "torneos-robotica",
+    "storage_bucket": "torneos-robotica.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456917876707:android:d50d57900306393630ead6",
+        "android_client_info": {
+          "package_name": "com.example.torneosrobotica"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHP71JAFhhLyVKnQ5sMPPRnZ7t9_O3230"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
