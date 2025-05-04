@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -30,9 +31,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import com.example.torneosrobotica.ui.theme.SelectedField
 import com.example.torneosrobotica.ui.theme.UnselectedField
 import android.util.Log
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 
 @Composable
 fun LoginView(auth: FirebaseAuth, navigateToPrincipal: () -> Unit) {
@@ -70,6 +78,8 @@ fun LoginView(auth: FirebaseAuth, navigateToPrincipal: () -> Unit) {
 
             Spacer(Modifier.height(48.dp))
 
+        var password by remember { mutableStateOf("") }
+        var passwordVisible by remember { mutableStateOf(false) }
             Text("Password", color = White, fontWeight = FontWeight.Bold, fontSize = 40.sp)
             TextField(
                 value = password,
@@ -78,7 +88,20 @@ fun LoginView(auth: FirebaseAuth, navigateToPrincipal: () -> Unit) {
                 colors = TextFieldDefaults.colors(
                     unfocusedContainerColor = UnselectedField,
                     focusedContainerColor = SelectedField
-                )
+                ),
+                visualTransformation = if(passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                trailingIcon = {
+                    val image = if (passwordVisible)
+                        Icons.Filled.Visibility
+                    else Icons.Filled.VisibilityOff
+
+                    val description = if (passwordVisible) "Ocultar contraseña" else "Mostrar contraseña"
+
+                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                        Icon(imageVector = image, contentDescription = description)
+                    }
+                }
             )
         Spacer(Modifier.height(48.dp))
         Button(onClick = {
