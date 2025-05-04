@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.torneosrobotica.model.Torneo
+import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.toObject
@@ -17,14 +18,24 @@ import kotlinx.coroutines.withContext
 
 class PrincipalViewModel:ViewModel() {
 
-    private lateinit var db: FirebaseFirestore
+    private val database = Firebase.database
+    private var db: FirebaseFirestore = Firebase.firestore
     private val _torneo = MutableStateFlow<List<Torneo>>(emptyList())
     val torneo:StateFlow<List<Torneo>> = _torneo
 
     init {
-        db = Firebase.firestore
+//        repeat(20){
+//
+//            loadData()
+//        }
         getTorneos()
     }
+//    private fun loadData(){
+//        val random = (1..1000).random()
+//    val torneo = Torneo(name = "Random $random", description = "Soccer $random", image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4PNAn1y-EJG_kF2Elk0PRpQlAAHDKrw2J6w&s")
+//    db.collection("torneos")
+//        .add(torneo)
+//    }
 
     private fun getTorneos(){
         viewModelScope.launch {

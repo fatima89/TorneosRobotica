@@ -14,7 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 @Composable
 fun Navigation (navHostController: NavHostController,auth: FirebaseAuth) {
 
-    NavHost(navController = navHostController, startDestination = "principal"){
+    NavHost(navController = navHostController, startDestination = "home"){
         composable("home")
         {
             HomeView(

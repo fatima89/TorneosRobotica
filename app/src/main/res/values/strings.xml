@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">TorneosRobotica</string>
+    <string name="app_name">Torneos-Robotica</string>
+    <string name="nombre_desarrollador">Fatima Lopez</string>
 </resources>
