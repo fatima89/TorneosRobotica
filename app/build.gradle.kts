@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.firebase.config)
 
     implementation(libs.coil)
+    implementation(libs.maps.play.services)
 
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.core.ktx)

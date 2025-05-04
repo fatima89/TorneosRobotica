@@ -36,7 +36,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.border
 
 @Composable
-fun HomeView(navigateToLogin:()-> Unit ={} ,navigateToSignUP: () -> Unit = {}) {
+fun HomeView(navigateToLogin:()-> Unit ={} ,navigateToSignUP: () -> Unit = {}, navigateToMap: () -> Unit = { }) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -76,7 +76,7 @@ fun HomeView(navigateToLogin:()-> Unit ={} ,navigateToSignUP: () -> Unit = {}) {
         }
         Spacer(modifier = Modifier.height(8.dp))
         CustomButton(
-            Modifier.clickable { },
+            Modifier.clickable { navigateToMap()},
             painterResource(id = R.drawable.googlelog),
             "Continuar con Google"
         )
